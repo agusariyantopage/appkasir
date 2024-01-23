@@ -1,5 +1,23 @@
 <?php
+    $sql="SELECT * FROM produk";
+    $query=mysqli_query($koneksi,$sql);
+    $jumlah_data=mysqli_num_rows($query);
+    $jumlah_produk=$jumlah_data;
 
+    $sql="SELECT * FROM pelanggan";
+    $query=mysqli_query($koneksi,$sql);
+    $jumlah_data=mysqli_num_rows($query);
+    $jumlah_pelanggan=$jumlah_data;
+
+    $sql="SELECT * FROM penjualan";
+    $query=mysqli_query($koneksi,$sql);
+    $jumlah_data=mysqli_num_rows($query);
+    $jumlah_transaksi=$jumlah_data;
+
+    $sql="SELECT SUM(TotalHarga) AS total_transaksi FROM penjualan";
+    $query=mysqli_query($koneksi,$sql);
+    $data=mysqli_fetch_array($query);
+    $total_transaksi=$data['total_transaksi'];
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -30,7 +48,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3></h3>
+                            <h3><?= $jumlah_produk; ?></h3>
 
                             <p>Produk</p>
                         </div>
@@ -45,7 +63,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3></h3>
+                            <h3><?= $jumlah_transaksi; ?></h3>
 
                             <p>Jumlah Transaksi</p>
                         </div>
@@ -60,7 +78,7 @@
                     <!-- small box -->
                     <div class="small-box bg-purple">
                         <div class="inner">
-                            <h3>Rp. </h3>
+                            <h4>Rp. <?= number_format($total_transaksi); ?></h4>
 
                             <p>Total Transaksi</p>
                         </div>
@@ -73,11 +91,11 @@
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-danger">
+                    <div class="small-box bg-pink">
                         <div class="inner">
-                            <h3>Rp. </h3>
+                            <h3><?= $jumlah_pelanggan; ?></h3>
 
-                            <p>Total Keuntungan</p>
+                            <p>Jumlah Pelanggan</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-exclamation-triangle"></i>
