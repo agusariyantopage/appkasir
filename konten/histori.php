@@ -50,7 +50,7 @@ $sql = "SELECT penjualan.*,pelanggan.NamaPelanggan FROM penjualan,pelanggan WHER
                                 
                                 <td> 
 <!-- Tombol Print Nota -->
-<a href="#"><i class="fas fa-print"></i></a> |
+<a href="pdf/output/nota_jual.php?PenjualanID=<?= $kolom['PenjualanID']; ?>" target="_blank"><i class="fas fa-print"></i></a> |
 <!-- Tombol Informasi -->
 <a href="index.php?p=infojual&PenjualanID=<?= $kolom['PenjualanID']; ?>"><i class="fas fa-search"></i></a> |
 <!-- Tombol Hapus -->
@@ -103,7 +103,9 @@ $sql = "SELECT penjualan.*,pelanggan.NamaPelanggan FROM penjualan,pelanggan WHER
                         ?>
                     </table>
 
-                    <button type="button" class="btn bg-purple btn-block mt-3" data-toggle="modal" data-target="#modalTambah"> <i class="fas fa-plus"></i> Tambah Produk Baru </button>
+                    <a href="index.php?p=tambah">
+                        <button class="btn bg-purple btn-block"><i class="fas fa-plus"> Tambah Penjualan Baru</i></button>
+                    </a>
                 </div>
             </div>
 
